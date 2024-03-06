@@ -1,8 +1,10 @@
-% sintoma(sintoma, doenca)
-%  Facilita na manipulação dos sintomas individualmente ao invés da
-%  estrutura: doenca(doenca, [Sintoma1, Sintoma2, ...]), que tornaria
-%  mais complexo essa manipulacao.
-
+%╔══════════════════════════════════════════════════════════════════════╗%
+%║                  Alunos                             RA               ║%
+%╠══════════════════════════════════════════════════════════════════════╣%
+%║       Andrei Roberto da Costa                     107975             ║%
+%║       Joao Gilberto Pelisson Casagrande                              ║%
+%║       Rodrigo Vieira de Vasconcellos                                 ║%
+%╚══════════════════════════════════════════════════════════════════════╝%
 
 % Inicia o diagnostico.
 iniciar_diagnostico :-

@@ -143,3 +143,52 @@ sintoma(dor_ossea, osteoporose).
 sintoma(perda_de_altura, osteoporose).
 sintoma(postura_curvada, osteoporose).
 sintoma(fraturas_osseas, osteoporose).
+
+% Bronquite.
+sintoma(tosse, bronquite).
+sintoma(falta_de_ar, bronquite).
+sintoma(chiado_no_peito, bronquite).
+sintoma(fadiga, bronquite).
+sintoma(febre, bronquite).
+
+% Sinusite.
+sintoma(dor_de_cabeca, sinusite).
+sintoma(coriza, sinusite).
+sintoma(dor_no_rosto, sinusite).
+sintoma(tosse, sinusite).
+sintoma(febre, sinusite).
+
+% Conjuntivite.
+sintoma(olhos_vermelhos, conjuntivite).
+sintoma(coceira_nos_olhos, conjuntivite).
+sintoma(secrecao_ocular, conjuntivite).
+sintoma(visao_embacada, conjuntivite).
+sintoma(sensibilidade_a_luz, conjuntivite).
+
+% Otite.
+sintoma(dor_de_ouvido, otite).
+sintoma(febre, otite).
+sintoma(perda_de_audicao, otite).
+sintoma(tontura, otite).
+sintoma(nausea, otite).
+
+% Rinite.
+sintoma(espirros, rinite).
+sintoma(coriza, rinite).
+sintoma(congestao_nasal, rinite).
+sintoma(coceira_no_nariz, rinite).
+sintoma(olhos_vermelhos, rinite).
+
+% Caxumba.
+sintoma(inchaco_das_parotidas, caxumba).
+sintoma(febre, caxumba).
+sintoma(dor_ao_mastigar, caxumba).
+sintoma(fadiga, caxumba).
+sintoma(perda_de_apetite, caxumba).
+
+% Catapora.
+sintoma(erupcao_cutanea, catapora).
+sintoma(febre, catapora).
+sintoma(fadiga, catapora).
+sintoma(dor_de_cabeca, catapora).
+sintoma(perda_de_apetite, catapora).
