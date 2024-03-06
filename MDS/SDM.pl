@@ -3,9 +3,6 @@
 %  estrutura: doenca(doenca, [Sintoma1, Sintoma2, ...]), que tornaria
 %  mais complexo essa manipulacao.
 
-% Base de conhecimento de 'sintoma'.
-% consult('Sintomas.pl').
-% consult('Doenca_Probabilidade.pl').
 
 % Inicia o diagnostico.
 iniciar_diagnostico :-
@@ -107,33 +104,46 @@ menu_feedback :-
     read(Opcao),
     processar_opcao_fb(Opcao).
 
+
 % Processa a opção escolhida pelo usuário
 processar_opcao_fb(1) :-
-    write('Por favor, insira a doença X: '), nl,
+    nl, write('Por favor, insira a doença X: '), nl,
     read(Doenca),
-    por_que_tem(Doenca).
+    por_que_tem(Doenca),
+    menu_feedback.
+
+%
 processar_opcao_fb(2) :-
-    write('Por favor, insira a doença Y: '), nl,
+    nl, write('Por favor, insira a doença Y: '), nl,
     read(DoencaY),
     write('Por favor, insira a doença X: '), nl,
     read(DoencaX),
     write('Por favor, insira os sintomas relatados pelo paciente (em formato de lista): '), nl,
     read(Sintomas),
-    por_que_nao_tem(DoencaY, DoencaX, Sintomas).
+    por_que_nao_tem(DoencaY, DoencaX, Sintomas),
+    menu_feedback .
+%
 processar_opcao_fb(3) :-
-    write('Por favor, insira o sintoma A: '), nl,
+    nl, write('Por favor, insira o sintoma A: '), nl,
     read(Sintoma),
-    por_que_perguntou(Sintoma).
+    por_que_perguntou(Sintoma),
+    menu_feedback.
+
+%
 processar_opcao_fb(4) :-
     menu_SDM.
+
+%
 processar_opcao_fb(_) :-
-    write('Opção inválida. Por favor, escolha uma opção de 1 a 4.'), nl,
+    nl, write('Opção inválida. Por favor, escolha uma opção de 1 a 4.'), nl,
     menu_feedback.
+
 
 %
 por_que_tem(Doenca) :-
     findall(Sintoma, sintoma(Sintoma, Doenca), Sintomas),
     write('O paciente foi diagnosticado com '), write(Doenca), write(' porque ele relatou alguns dos seguintes sintomas: '), write(Sintomas), nl.
+
 
 %
 por_que_nao_tem(Doenca, SintomasReportados) :-

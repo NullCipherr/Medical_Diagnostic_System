@@ -1,12 +1,15 @@
-start :-
-    nl, write('Carregando Sistema de Diagnostico Médico...'), nl,
-    consult('SDM.pl'),
-    write('Carregando Sistema de Controle de Pacientes...'), nl,
-    consult('SCP.pl'),
-    menu_principal.
+%=============================================%
+%        Alunos                        RA     %
+%=============================================%
+% Andrei Roberto da Costa            107975   %
+% Joao Gilberto Pelisson Casagrande           %
+% Rodrigo Vieira de Vasconcellos              %
+%=============================================%
 
-% Menu de Selecao de Sistemas
-% Menu Principal
+
+%% menu_principal
+%
+%  Exibe o menu principal do sistema clínico.
 menu_principal :-
     nl,
     write('=================================='), nl,
@@ -19,7 +22,10 @@ menu_principal :-
     read(Opcao),
     processar_opcao_menu(Opcao).
 
-% Opcoes de selecao do menu principal.
+
+%% processar_opcao_menu(+Opcao)
+%
+%  Processa a opção escolhida no menu principal.
 processar_opcao_menu(1) :-
     menu_SDM.
 processar_opcao_menu(2) :-
@@ -28,7 +34,15 @@ processar_opcao_menu(3) :-
     nl, write('Saindo...'), nl, nl.
 
 
-
+%% start
+%
+%  Inicia o sistema clínico.
+start :-
+    nl, write('Carregando Sistema de Diagnostico Médico...'), nl,
+    consult('SDM.pl'),
+    write('Carregando Sistema de Controle de Pacientes...'), nl,
+    consult('SCP.pl'),
+    menu_principal.
 
 
 

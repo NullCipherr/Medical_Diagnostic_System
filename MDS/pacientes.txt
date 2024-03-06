@@ -1,1 +1,1 @@
-paciente(1,_26230,kleber,30,(frio,calor),virose)paciente(2,jose,bambam,25,febre,virosekkk)
+paciente(1,andrei,buendia,34,(febre,tosse,calor),gripe)
