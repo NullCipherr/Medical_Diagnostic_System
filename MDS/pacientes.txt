@@ -1,1 +1,1 @@
-paciente(1,andrei,buendia,34,(febre,tosse,calor),gripe)
+paciente(1,andrei,costa,40,(febre,tosse),gay)
