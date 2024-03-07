@@ -7,15 +7,30 @@
 %╚══════════════════════════════════════════════════════════════════════╝%
 
 
-% carregar_pacientes is semidet
+:- dynamic paciente/6.
+
+%
+verificar_paciente :-
+    (current_predicate(paciente/6) ->
+        true
+    ;
+        assertz(paciente(_, _, _, _, _, _))
+    ).
+
+%% carregar_pacientes is semidet
 %
 %  Carrega os pacientes do arquivo 'pacientes.txt', se existir.
+%  Caso contrário, cria um novo arquivo 'pacientes.txt'.
 carregar_pacientes :-
-    exists_file('pacientes.txt'), !,
-    open('pacientes.txt', read, Str),
-    read_pacientes(Str, _),
-    close(Str).
-carregar_pacientes.
+    (exists_file('pacientes.txt') ->
+        open('pacientes.txt', read, Str),
+        read_pacientes(Str, _),
+        close(Str)
+    ;
+        open('pacientes.txt', write, Str),
+        close(Str),
+        write('Arquivo pacientes.txt criado.')
+    ).
 
 
 %% read_pacientes(+Stream, -List) is nondet

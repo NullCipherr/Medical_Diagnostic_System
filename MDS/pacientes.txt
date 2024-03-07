@@ -1,1 +1,0 @@
-paciente(1,andrei,costa,40,(febre,tosse),gay)
