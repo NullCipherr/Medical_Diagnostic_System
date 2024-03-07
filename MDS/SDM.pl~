@@ -156,7 +156,7 @@ processar_opcao_fb(_) :-
 % Retorna o motivo de ter a doenca X.
 por_que_tem(Doenca) :-
     findall(Sintoma, sintoma(Sintoma, Doenca), Sintomas),
-    nl, write('O paciente foi diagnosticado com '), write(Doenca), write(' porque ele relatou alguns dos seguintes sintomas: '), write(Sintomas), nl.
+    write('O paciente foi diagnosticado com '), write(Doenca), write(' porque ele relatou alguns dos seguintes sintomas: '), write(Sintomas), nl.
 
 
 % por_que_perguntou(+Sintoma)
@@ -164,4 +164,4 @@ por_que_tem(Doenca) :-
 % Retorna as doencas relacionadas aos sintomas.
 por_que_perguntou(Sintoma) :-
     findall(Doenca, sintoma(Sintoma, Doenca), Doencas),
-    nl, write('Foi perguntado se o paciente tem '), write(Sintoma), write(' porque este sintoma está associado às seguintes doenças: '), write(Doencas), nl.
+    write('Foi perguntado se o paciente tem '), write(Sintoma), write(' porque este sintoma está associado às seguintes doenças: '), write(Doencas), nl.

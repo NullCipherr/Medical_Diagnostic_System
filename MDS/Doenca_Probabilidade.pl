@@ -7,58 +7,59 @@
 %╚══════════════════════════════════════════════════════════════════════╝%
 
 
-% Probabilidades das doenças.
+% Probabilidades das doenças em porcentagem.
 % Covid-19.
-probabilidade(covid19, 0.1).
+probabilidade(covid19, 10).
 % Gripe comum.
-probabilidade(gripe, 0.2).
+probabilidade(gripe, 20).
 % Dengue.
-probabilidade(dengue, 0.15).
+probabilidade(dengue, 15).
 % Asthma.
-probabilidade(asthma, 0.05).
+probabilidade(asthma, 5).
 % Diabetes.
-probabilidade(diabetes, 0.08).
+probabilidade(diabetes, 8).
 % Hipertensao.
-probabilidade(hipertensao, 0.12).
+probabilidade(hipertensao, 12).
 % Anemia.
-probabilidade(anemia, 0.07).
+probabilidade(anemia, 7).
 % Obesidade.
-probabilidade(obesidade, 0.09).
+probabilidade(obesidade, 9).
 % Depressao.
-probabilidade(depressao, 0.11).
+probabilidade(depressao, 11).
 % Ansiedade.
-probabilidade(ansiedade, 0.13).
+probabilidade(ansiedade, 13).
 % Hipotireodismo.
-probabilidade(hipotireoidismo, 0.06).
+probabilidade(hipotireoidismo, 6).
 % Hipertiroidismo.
-probabilidade(hipertireoidismo, 0.04).
+probabilidade(hipertireoidismo, 4).
 % Insuficiencia renal.
-probabilidade(insuficiencia_renal, 0.03).
+probabilidade(insuficiencia_renal, 3).
 % Hepatite.
-probabilidade(hepatite, 0.02).
+probabilidade(hepatite, 2).
 % Pneumonia.
-probabilidade(pneumonia, 0.05).
+probabilidade(pneumonia, 5).
 % Tuberculose.
-probabilidade(tuberculose, 0.03).
+probabilidade(tuberculose, 3).
 % Gastrite.
-probabilidade(gastrite, 0.07).
+probabilidade(gastrite, 7).
 % Ulcera peptica.
-probabilidade(ulcera_peptica, 0.06).
+probabilidade(ulcera_peptica, 6).
 % Artrite reumatoide.
-probabilidade(artrite_reumatoide, 0.04).
+probabilidade(artrite_reumatoide, 4).
 % Osteoporose
-probabilidade(osteoporose, 0.03).
+probabilidade(osteoporose, 3).
 % Bronquite.
-probabilidade(bronquite, 0.03).
+probabilidade(bronquite, 3).
 % Sinusite.
-probabilidade(sinusite, 0.14).
+probabilidade(sinusite, 14).
 % Conjuntivite.
-probabilidade(conjuntivite, 0.275).
+probabilidade(conjuntivite, 27.5).
 % Otite.
-probabilidade(otite, 0.5).
+probabilidade(otite, 50).
 % Rinite.
-probabilidade(rinite, 0.32).
+probabilidade(rinite, 32).
 % Caxumba.
-probabilidade(caxumba, 0.01).
+probabilidade(caxumba, 1).
 % Catapora.
-probabilidade(catapora, 0.02).
+probabilidade(catapora, 2).
+

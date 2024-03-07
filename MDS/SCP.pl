@@ -9,13 +9,18 @@
 
 :- dynamic paciente/6.
 
+
+%% verificar_paciente is semidet
 %
+%  Verifica se o predicado paciente/6 existe.
+%  Se não existir, um novo predicado paciente/6 é criado.
 verificar_paciente :-
     (current_predicate(paciente/6) ->
         true
     ;
         assertz(paciente(_, _, _, _, _, _))
     ).
+
 
 %% carregar_pacientes is semidet
 %
@@ -29,7 +34,7 @@ carregar_pacientes :-
     ;
         open('pacientes.txt', write, Str),
         close(Str),
-        write('Arquivo pacientes.txt criado.')
+        write('Arquivo pacientes.txt criado com sucesso!'), nl
     ).
 
 
