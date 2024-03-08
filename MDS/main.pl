@@ -1,12 +1,3 @@
-%╔══════════════════════════════════════════════════════════════════════╗%
-%║                  Alunos                             RA               ║%
-%╠══════════════════════════════════════════════════════════════════════╣%
-%║       Andrei Roberto da Costa                     107975             ║%
-%║       Joao Gilberto Pelisson Casagrande           112684             ║%
-%║       Rodrigo Vieira de Vasconcelos               112680             ║%
-%╚══════════════════════════════════════════════════════════════════════╝%
-
-
 %% menu_principal
 %
 %  Exibe o menu principal do sistema clínico.
