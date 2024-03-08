@@ -10,6 +10,13 @@
 :- dynamic paciente/6.
 
 
+% load_main is det.
+%
+% Carrega o arquivo de dependencia main.pl.
+load_main :-
+     consult('main.pl').
+
+
 %% verificar_paciente is semidet
 %
 %  Verifica se o predicado paciente/6 existe.
@@ -188,6 +195,7 @@ listar_pacientes :-
 %
 %  Exibe o menu do Sistema de Controle de Pacientes.
 menu_SCP :-
+    load_main,
     nl,
     write('=================================='), nl,
     write(' Sistema de Controle de Pacientes '), nl,
@@ -275,7 +283,6 @@ processar_opcao_SCP(5) :-
 
 % Voltar ao menu anterior.
 processar_opcao_SCP(6) :-
-    consult('main.pl'),
     menu_principal.
 
 % Opcao invalida.
