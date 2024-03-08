@@ -63,12 +63,6 @@ imprimir_doencas([(H, P)|T]) :-
     imprimir_doencas(T).
 
 
-imprimir_doencas([]).
-imprimir_doencas([(H, P)|T]) :-
-    write('- '), write(H), write(' com probabilidade de '), write(P), write('%'), nl,
-    imprimir_doencas(T).
-
-
 %% list_to_set(+List, -Set) is nondet
 %
 % Converte uma lista para um conjunto (remove duplicatas).
