@@ -8,7 +8,9 @@ Construa um protótipo de um sistema de diagnóstico médico o qual deve apresen
   - Alteração ;
   - Exclusão de pacientes em um arquivo de dados chamado pacientes.txt.
 
-- Encontre na internet, livro ou qualquer outra fonte uma lista de doenças (no mínimo 10) e seus sintomas e adicione-as no código fonte em prolog. Juntamente a cada doença, deve ser armazenado o valor de probabilidade de cada doença. 
+- Encontre na internet, livro ou qualquer outra fonte uma lista de doenças (no mínimo 10) e seus sintomas e adicione-as no código fonte em prolog.
+
+- Juntamente a cada doença, deve ser armazenado o valor de probabilidade de cada doença. 
 
 - Módulo de diagnóstico: crie uma IHC (Interface Humano Computador) para o sistema, de modo que ela interaja com o usuário solicitando informações de sintomas que o paciente esteja sentindo. Alguns exemplos são: náusea, vômito, febre, tempo de febre, intensidade da febre (baixa até 38 graus; alta acima de 39 graus), diarreia, dor no pescoço, etc.
 
