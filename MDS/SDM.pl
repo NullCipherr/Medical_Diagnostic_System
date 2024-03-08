@@ -43,12 +43,26 @@ diagnosticar_doencas(Sintomas) :-
     findall((Doenca, Prob), (sintoma(Sintoma, Doenca), member(Sintoma, Sintomas), probabilidade(Doenca, Prob)), Doencas),
     sort(2, @>=, Doencas, DoencasOrdenadas),
     list_to_set(DoencasOrdenadas, DoencasUnicas),
-    imprimir_doencas(DoencasUnicas), nl.
+    imprimir_doencas_inverso(DoencasUnicas), nl.
+
+
+% imprimir_doencas_inverso(+Doencas) is nondet
+%
+% Imprime as doenças em um formato de lista numerada em ordem inversa.
+imprimir_doencas_inverso(Doencas) :-
+    reverse(Doencas, DoencasInverso),
+    imprimir_doencas(DoencasInverso).
 
 
 %% imprimir_doencas(+Doencas) is nondet
 %
-% Imprime As doenças em um formato de lista numerada.
+% Imprime as doenças em um formato de lista numerada.
+imprimir_doencas([]).
+imprimir_doencas([(H, P)|T]) :-
+    write('- '), write(H), write(' com probabilidade de '), write(P), write('%'), nl,
+    imprimir_doencas(T).
+
+
 imprimir_doencas([]).
 imprimir_doencas([(H, P)|T]) :-
     write('- '), write(H), write(' com probabilidade de '), write(P), write('%'), nl,
