@@ -3,10 +3,10 @@
 Construa um protótipo de um sistema de diagnóstico médico o qual deve apresentar os seguintes módulos :
 
 - Controle de pacientes devendo permitir
-  - consulta ;
-  - inclusão ;
-  - alteração ;
-  - exclusão de pacientes em um arquivo de dados chamado pacientes.txt.
+  - Consulta ;
+  - Inclusão ;
+  - Alteração ;
+  - Exclusão de pacientes em um arquivo de dados chamado pacientes.txt.
 
 - Encontre na internet, livro ou qualquer outra fonte uma lista de doenças (no mínimo 10) e seus sintomas e adicione-as no código fonte em prolog. Juntamente a cada doença, deve ser armazenado o valor de probabilidade de cada doença. 
 
