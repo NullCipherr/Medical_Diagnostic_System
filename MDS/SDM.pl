@@ -43,8 +43,7 @@ diagnosticar_doencas(Sintomas) :-
     findall((Doenca, Prob), (sintoma(Sintoma, Doenca), member(Sintoma, Sintomas), probabilidade(Doenca, Prob)), Doencas),
     sort(2, @>=, Doencas, DoencasOrdenadas),
     list_to_set(DoencasOrdenadas, DoencasUnicas),
-    imprimir_doencas(DoencasUnicas), nl,
-    menu_SDM.
+    imprimir_doencas(DoencasUnicas), nl.
 
 
 %% imprimir_doencas(+Doencas) is nondet
@@ -113,7 +112,8 @@ menu_SDM :-
 % Processa a opção escolhida pelo usuário no menu do Sistema de Diagnóstico Médico.
 processar_opcao_SDM(1) :-
     % write('Iniciando Diagnostico...'),
-    iniciar_diagnostico.
+    iniciar_diagnostico,
+    menu_SDM.
 processar_opcao_SDM(2) :-
     nl, write('Listando todos os sintomas...'), nl, nl,
     imprimir_sintomas,
