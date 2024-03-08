@@ -2,7 +2,7 @@
 
 Construa um protótipo de um sistema de diagnóstico médico o qual deve apresentar os seguintes módulos :
 
-- Controle de pacientes devendo permitir
+- Controle de pacientes possuindo :
   - Consulta ;
   - Inclusão ;
   - Alteração ;
