@@ -7,6 +7,14 @@
 %╚══════════════════════════════════════════════════════════════════════╝%
 
 
+%% carregar_dependencias is det.
+%
+% Carrega os arquivos de dependencias, como sintomas, etc.
+carregar_dependencias :-
+    consult('Sintomas.pl'),
+    consult('Doenca_Probabilidade.pl').
+
+
 %% iniciar_diagnostico is nondet
 %
 % Inicia o diagnóstico. Carrega os arquivos 'Sintomas.pl' e 'Doenca_Probabilidade.pl', e começa a coleta de sintomas.
@@ -87,12 +95,13 @@ imprimir_sintomas :-
     forall(member(Sintoma, Sintomas), ((write('- '),(write(Sintoma))), nl)).
 
 
-%% carregar_dependencias is det.
+% imprimir(+L)
 %
-% Carrega os arquivos de dependencias, como sintomas, etc.
-carregar_dependencias :-
-    consult('Sintomas.pl'),
-    consult('Doenca_Probabilidade.pl').
+% Imprime de forma formatada a lista L. 
+imprimir([]).
+imprimir([H|T]) :-
+    write('- '), write(H), nl,
+    imprimir(T).
 
 
 %% menu_SDM is nondet.
@@ -186,7 +195,8 @@ processar_opcao_fb(_) :-
 % Retorna o motivo de ter a doenca X.
 por_que_tem(Doenca) :-
     findall(Sintoma, sintoma(Sintoma, Doenca), Sintomas),
-    nl, write('O paciente foi diagnosticado com '), write(Doenca), write(' porque ele relatou alguns dos seguintes sintomas: '), write(Sintomas), nl.
+    nl, write('O paciente foi diagnosticado com '), write(Doenca), write(' porque ele relatou alguns dos seguintes sintomas: '), nl,
+    imprimir(Sintomas), nl.
 
 
 % por_que_perguntou(+Sintoma)
@@ -194,4 +204,5 @@ por_que_tem(Doenca) :-
 % Retorna as doencas relacionadas aos sintomas.
 por_que_perguntou(Sintoma) :-
     findall(Doenca, sintoma(Sintoma, Doenca), Doencas),
-    nl, write('Foi perguntado se o paciente tem '), write(Sintoma), write(' porque este sintoma está associado às seguintes doenças: '), write(Doencas), nl.
+    nl, write('Foi perguntado se o paciente tem '), write(Sintoma), write(' porque este sintoma está associado às seguintes doenças: '), nl,
+    imprimir(Doencas), nl.
