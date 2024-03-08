@@ -19,6 +19,7 @@ carregar_dependencias :-
 %
 % Inicia o diagnóstico. Carrega os arquivos 'Sintomas.pl' e 'Doenca_Probabilidade.pl', e começa a coleta de sintomas.
 iniciar_diagnostico :-
+    nl, write('O resultado do protótipo é apenas informativo e que o paciente deve consultar um médico para obter um diagnóstico correto e preciso.'), nl,
     nl, write('Olá! Vamos começar o diagnóstico. Por favor, informe os sintomas que está sentindo.'), nl,
     coletar_sintomas([]).
 
