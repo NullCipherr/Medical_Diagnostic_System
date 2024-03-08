@@ -11,9 +11,6 @@
 %
 % Inicia o diagnóstico. Carrega os arquivos 'Sintomas.pl' e 'Doenca_Probabilidade.pl', e começa a coleta de sintomas.
 iniciar_diagnostico :-
-    consult('Sintomas.pl'),
-    consult('Doenca_Probabilidade.pl'),
-
     nl, write('Olá! Vamos começar o diagnóstico. Por favor, informe os sintomas que está sentindo.'), nl,
     coletar_sintomas([]).
 
@@ -74,18 +71,37 @@ list_to_set([H|T], Temp, Set) :-
     ).
 
 
-%% menu_SDM is nondet
+% imprimir_sintomas(+Sintomas) is det.
+%
+% Retorna os sintomas listados na base de conhecimento.
+% Definição da função imprimir_sintomas
+imprimir_sintomas :-
+    setof(Sintoma, Doenca^sintoma(Sintoma, Doenca), Sintomas),
+    forall(member(Sintoma, Sintomas), ((write('- '),(write(Sintoma))), nl)).
+
+
+%% carregar_dependencias is det.
+%
+% Carrega os arquivos de dependencias, como sintomas, etc.
+carregar_dependencias :-
+    consult('Sintomas.pl'),
+    consult('Doenca_Probabilidade.pl').
+
+
+%% menu_SDM is nondet.
 %
 % Menu do Sistema de Diagnóstico Médico. O usuário pode escolher entre diagnosticar um paciente, dar feedback ou voltar.
 menu_SDM :-
+    carregar_dependencias,
     nl,
     write('=================================='), nl,
     write('   Sistema de Diagnostico Médico  '), nl,
     write('=================================='), nl, nl,
 
     write(' 1. Diagnosticar Paciente'), nl,
-    write(' 2. Feedback'), nl, nl,
-    write(' 3. Voltar'), nl,
+    write(' 2. Listar Sintomas'), nl,
+    write(' 3. Feedback'), nl,
+    write(' 4. Voltar'), nl,
     nl, nl,
 
     read(Opcao),
@@ -99,11 +115,17 @@ processar_opcao_SDM(1) :-
     % write('Iniciando Diagnostico...'),
     iniciar_diagnostico.
 processar_opcao_SDM(2) :-
-    % write('Iniciando Feedback...'),
-    menu_feedback.
+    nl, write('Listando todos os sintomas...'), nl, nl,
+    imprimir_sintomas,
+    menu_SDM.
 processar_opcao_SDM(3) :-
-    %write('Voltando para o menu principal...')
+    nl, write('Iniciando Feedback...'), nl,
+    menu_feedback.
+processar_opcao_SDM(4) :-
+    nl, write('Voltando para o menu principal...'), nl,
     menu_principal.
+processar_opcao_SDM(_) :-
+    nl, write('Opcao Invalida!'), nl.
 
 
 %% menu_feedback is nondet
