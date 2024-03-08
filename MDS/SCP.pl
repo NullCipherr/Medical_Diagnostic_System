@@ -89,11 +89,7 @@ consultar_paciente(Id, Nome, Sobrenome, Idade, Sintomas, Diagnostico) :-
 %
 %  Inclui um novo paciente.
 incluir_paciente(Id, Nome, Sobrenome, Idade, Sintomas, Diagnostico) :-
-    %nonvar(Nome),
-    %nonvar(Sobrenome),
-    %nonvar(Idade),
-    %nonvar(Sintomas),
-    %nonvar(Diagnostico),
+    \+ paciente(Id, _, _, _, _, _),
     assertz(paciente(Id, Nome, Sobrenome, Idade, Sintomas, Diagnostico)),
     salvar_pacientes.
 
