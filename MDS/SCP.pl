@@ -10,11 +10,22 @@
 :- dynamic paciente/6.
 
 
-% load_main is det.
+%% load_main is det.
 %
 % Carrega o arquivo de dependencia main.pl.
 load_main :-
      consult('main.pl').
+
+
+%% sair is semidet
+%
+% Verifica se os arquivos foram fechados corretamente.
+sair :-
+    (current_stream(_, _, Stream) ->
+        (close(Stream), nl,write('Todos os arquivos foram fechados corretamente.'), nl)
+    ;
+        (write('Nenhum arquivo aberto.'), nl)
+    ).
 
 
 %% verificar_paciente is semidet
@@ -188,7 +199,7 @@ listar_pacientes :-
                write('   '),write(Id), write('     '),write(Nome),write('    '), write(Sobrenome), write('          '), write(Idade), write('        '), write(Sintomas), write('           '), write(Diagnostico), nl, nl)
     ),
 
-    nl, nl, write('Listagem realizada com sucesso!!'), nl.
+    nl, write('Listagem realizada com sucesso!!'), nl.
 
 
 %% menu_SCP is det
@@ -283,6 +294,7 @@ processar_opcao_SCP(5) :-
 
 % Voltar ao menu anterior.
 processar_opcao_SCP(6) :-
+    sair,
     menu_principal.
 
 % Opcao invalida.
