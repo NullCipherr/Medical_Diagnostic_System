@@ -42,9 +42,7 @@ start :-
     consult('SDM.pl'),
     write('Carregando Sistema de Controle de Pacientes...'), nl,
     consult('SCP.pl'),
-    write('Carregando pacientes.txt...'), nl,
-    carregar_pacientes,
-    write('Verificando os pacientes...'), nl,
+    write('Verificando pacientes.txt...'), nl,
     verificar_paciente,
     menu_principal.
 
