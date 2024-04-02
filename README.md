@@ -1,30 +1,38 @@
-# Medical_Diagnostic_System
+# 🏥 Medical_Diagnostic_System
+Este repositório contém um protótipo de um sistema de diagnóstico médico com vários módulos, incluindo módulo de pacientes e módulo de diagnóstico.
 
-Construa um protótipo de um sistema de diagnóstico médico o qual deve apresentar os seguintes módulos :
+## 🎯 Objetivo
+O objetivo deste projeto é construir um protótipo de um sistema de diagnóstico médico que interage com o usuário para identificar possíveis doenças com base nos sintomas informados.
 
-- Controle de pacientes possuindo :
-  - Consulta ;
-  - Inclusão ;
-  - Alteração ;
-  - Exclusão de pacientes em um arquivo de dados chamado pacientes.txt.
+## 📋 Módulo de Controle de Pacientes
+O sistema possui um módulo de controle de pacientes que permite a consulta, inclusão, alteração e exclusão de pacientes em um arquivo de dados chamado pacientes.txt. 
 
-- Encontre na internet, livro ou qualquer outra fonte uma lista de doenças (no mínimo 10) e seus sintomas e adicione-as no código fonte em prolog.
+## 🤖 Módulo de Diagnóstico
+O sistema possui uma Interface Humano-Computador (IHC) que interage com o usuário solicitando informações sobre os sintomas que o paciente está sentindo.
 
-- Juntamente a cada doença, deve ser armazenado o valor de probabilidade de cada doença. 
+## 📚 Lista de Doenças
+O código fonte em Prolog inclui uma lista de doenças e seus sintomas, juntamente com o valor de probabilidade de cada doença. 
 
-- Módulo de diagnóstico: crie uma IHC (Interface Humano Computador) para o sistema, de modo que ela interaja com o usuário solicitando informações de sintomas que o paciente esteja sentindo. Alguns exemplos são: náusea, vômito, febre, tempo de febre, intensidade da febre (baixa até 38 graus; alta acima de 39 graus), diarreia, dor no pescoço, etc.
+## 📊 IHC de Resultados
+Se houver mais de um tipo de doença relacionada aos sintomas informados pelo paciente, o sistema apresentará os percentuais de probabilidade das possíveis doenças do paciente. 
 
-- IHC de resultados: caso haja mais de um tipo de doença relacionada aos sintomas informados pelo paciente, o sistema deve apresentar os percentuais de probabilidade das possíveis doenças do paciente.
+## ❓ Mecanismos de Questionamento
+O sistema permite que o usuário questione o diagnóstico final, fornecendo explicações sobre por que o paciente tem a doença X, por que o paciente não tem a doença Y, e por que foi perguntado se o paciente tem o sintoma A. 🧐
 
-- Criar mecanismos para o usuário questionar o sistema:
-  - Dado um diagnóstico final, por que o paciente tem a doença X? (qual regra derivou X).
-  - Dado um diagnóstico final, por que o paciente não tem a doença Y, ao invés da X? (quais premissas de Y o paciente não tem de sintomas).
-  - Por que foi perguntado se o paciente tem o sintoma A? (lista quais doenças tem o sintoma A)
+## 📖 Informações Adicionais
+A IHC permite que o usuário peça mais informações sobre o diagnóstico da doença, mostrando quais sintomas da doença o paciente apresenta e quais outros sintomas da doença o usuário não informou. 
 
-- As doenças devem ser listadas por ordem da maior para a menor probabilidade.
+## 🧪 Testes Unitários
+O repositório inclui testes unitários para as funcionalidades implementadas. 
 
-- O sistema de diagnóstico deve apresentar o seguinte texto: o resultado do protótipo é apenas informativo e que o paciente deve consultar um médico para obter um diagnóstico correto e preciso.
+## ⚙️ Como utilizar
+Este programa foi desenvolvido em Racket e deve ser executado no DrRacket. Aqui estão as etapas para utilizá-lo:
 
-- A IHC deve permitir que o usuário peça mais informações sobre o diagnóstico da doença, o sistema deve então mostrar quais sintomas da doença o paciente apresenta e quais outros sintomas da doença o usuário não informou.
+- Instale o DrRacket: Se você ainda não tem o DrRacket instalado, você pode baixá-lo do site oficial: DrRacket.
+- Clone o repositório: Clone o repositório do Medical_Diagnostic_System para o seu computador local.
+- Abra o arquivo no DrRacket: Navegue até a pasta do projeto clonado e abra o arquivo principal do programa (por exemplo, main.rkt) no DrRacket.
+- Execute o programa: No DrRacket, clique no botão ‘Run’ para executar o programa.
+- Interaja com o programa: O programa solicitará informações sobre os sintomas que o paciente está sentindo. Insira as informações conforme solicitado.
+- Veja os resultados: Após inserir todas as informações necessárias, o programa fornecerá um diagnóstico baseado nos sintomas informados.
 
-- Criar testes unitários para as funcionalidades implementadas.
+Lembre-se, este é apenas um protótipo de um sistema de diagnóstico médico. Sempre consulte um profissional de saúde para um diagnóstico preciso.
