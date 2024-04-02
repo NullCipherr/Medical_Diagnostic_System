@@ -26,12 +26,12 @@ A IHC permite que o usuário peça mais informações sobre o diagnóstico da do
 O repositório inclui testes unitários para as funcionalidades implementadas. 
 
 ## ⚙️ Como utilizar
-Este programa foi desenvolvido em Racket e deve ser executado no DrRacket. Aqui estão as etapas para utilizá-lo:
+Este programa foi desenvolvido em Prolog e deve ser executado no SWI-Prolog. Aqui estão as etapas para utilizá-lo:
 
-- Instale o DrRacket: Se você ainda não tem o DrRacket instalado, você pode baixá-lo do site oficial: DrRacket.
+- Instale o SWI-Prolog: Se você ainda não tem o SWI-Prolog instalado, você pode baixá-lo do site oficial: SWI-Prolog.
 - Clone o repositório: Clone o repositório do Medical_Diagnostic_System para o seu computador local.
-- Abra o arquivo no DrRacket: Navegue até a pasta do projeto clonado e abra o arquivo principal do programa (por exemplo, main.rkt) no DrRacket.
-- Execute o programa: No DrRacket, clique no botão ‘Run’ para executar o programa.
+- Abra o arquivo no SWI-Prolog: Navegue até a pasta do projeto clonado e abra o arquivo principal do programa (por exemplo, main.pl) no SWI-Prolog.
+- Execute o programa: No SWI-Prolog, digite "consult('main.pl')", para carregar o arquivo e em seguida "main." para executar o programa carregado.
 - Interaja com o programa: O programa solicitará informações sobre os sintomas que o paciente está sentindo. Insira as informações conforme solicitado.
 - Veja os resultados: Após inserir todas as informações necessárias, o programa fornecerá um diagnóstico baseado nos sintomas informados.
 
