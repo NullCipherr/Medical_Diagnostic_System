@@ -1,5 +1,5 @@
-:- consult('SCP.pl').
-:- consult('SDM.pl').
+:- consult('../src/patients/scp.pl').
+:- consult('../src/diagnosis/sdm.pl').
 
 
 % Teste de lista para conjunto(list_to_set)
@@ -99,20 +99,23 @@ test('Tenta excluir paciente ja excluido') :-
 test('Salva pacientes quando a lista de pacientes esta vazia') :-
     retractall(paciente(_, _, _, _, _, _)),  % Limpa todos os pacientes.
     salvar_pacientes,
-    exists_file('pacientes.txt').  % Verifica se o arquivo 'pacientes.txt' existe.
+    caminho_pacientes(Caminho),
+    exists_file(Caminho).  % Verifica se o arquivo de pacientes existe.
 
 test('Salva um paciente') :-
     retractall(paciente(_, _, _, _, _, _)),  % Limpa todos os pacientes
     assertz(paciente(999, 'joao', 'silva', 35, ['Febre', 'Tosse'], 'Gripe')),
     salvar_pacientes,
-    exists_file('pacientes.txt').  % Verifica se o arquivo 'pacientes.txt' existe.
+    caminho_pacientes(Caminho),
+    exists_file(Caminho).  % Verifica se o arquivo de pacientes existe.
 
 test('Salva varios pacientes') :-
     retractall(paciente(_, _, _, _, _, _)),  % Limpa todos os pacientes
     assertz(paciente(999, 'joao', 'silva', 35, ['Febre', 'Tosse'], 'Gripe')),
     assertz(paciente(998, 'maria', 'santos', 45, ['Dor de cabeca', 'Nausea'], 'Enxaqueca')),
     salvar_pacientes,
-    exists_file('pacientes.txt').  % Verifica se o arquivo 'pacientes.txt' existe.
+    caminho_pacientes(Caminho),
+    exists_file(Caminho).  % Verifica se o arquivo de pacientes existe.
 
 :- end_tests(salvar_pacientes).
 

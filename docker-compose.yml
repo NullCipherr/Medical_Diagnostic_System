@@ -1,0 +1,31 @@
+services:
+  mds:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medical_diagnostic_system
+    stdin_open: true
+    tty: true
+    working_dir: /app
+    volumes:
+      - ./data/pacientes.txt:/app/data/pacientes.txt
+
+  mds-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medical_diagnostic_system_tests
+    working_dir: /app
+    command: ["swipl", "-q", "-s", "tests/tests.pl", "-g", "run_tests", "-t", "halt"]
+
+  mds-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medical_diagnostic_system_web
+    working_dir: /app
+    command: ["swipl", "-q", "-s", "src/web/web_ui.pl", "-g", "start_web"]
+    ports:
+      - "${MDS_WEB_PORT:-8081}:8080"
+    volumes:
+      - ./data/pacientes.txt:/app/data/pacientes.txt

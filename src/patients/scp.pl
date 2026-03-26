@@ -1,11 +1,33 @@
 :- dynamic paciente/6.
+:- dynamic scp_base_dir/1.
+:- prolog_load_context(directory, SCP_DIR), asserta(scp_base_dir(SCP_DIR)).
+
+
+%% caminho_relativo_scp(+Relativo, -Absoluto) is det.
+%
+%  Resolve caminhos relativos a partir de src/patients.
+caminho_relativo_scp(Relativo, Absoluto) :-
+    scp_base_dir(Base),
+    directory_file_path(Base, Relativo, Absoluto).
+
+
+%% caminho_pacientes(-Caminho) is det.
+%
+%  Recupera o caminho absoluto do arquivo de pacientes.
+caminho_pacientes(Caminho) :-
+    caminho_relativo_scp('../../data/pacientes.txt', Caminho).
 
 
 %% load_main is det.
 %
 % Carrega o arquivo de dependencia main.pl.
 load_main :-
-     consult('main.pl').
+     (current_predicate(menu_principal/0) ->
+        true
+     ;
+        caminho_relativo_scp('../cli/main.pl', CaminhoMain),
+        consult(CaminhoMain)
+     ).
 
 
 %% sair is semidet
@@ -36,12 +58,13 @@ verificar_paciente :-
 %  Carrega os pacientes do arquivo 'pacientes.txt', se existir.
 %  Caso contrário, cria um novo arquivo 'pacientes.txt'.
 carregar_pacientes :-
-    (exists_file('pacientes.txt') ->
-        open('pacientes.txt', read, Str),
+    caminho_pacientes(Caminho),
+    (exists_file(Caminho) ->
+        open(Caminho, read, Str),
         read_pacientes(Str, _),
         close(Str)
     ;
-        open('pacientes.txt', write, Str),
+        open(Caminho, write, Str),
         close(Str),
         write('Arquivo pacientes.txt criado com sucesso!'), nl
     ).
@@ -63,9 +86,16 @@ read_pacientes(Stream,[X|L]) :-
 %
 %  Salva os pacientes no arquivo 'pacientes.txt'.
 salvar_pacientes :-
-    open('pacientes.txt', write, Str),
-    forall(paciente(Id, Nome, Sobrenome, Idade, Sintomas, Diagnostico),
-           writeq(Str, paciente(Id, Nome, Sobrenome, Idade, Sintomas, Diagnostico))),
+    caminho_pacientes(Caminho),
+    open(Caminho, write, Str),
+    forall(
+        paciente(Id, Nome, Sobrenome, Idade, Sintomas, Diagnostico),
+        (
+            writeq(Str, paciente(Id, Nome, Sobrenome, Idade, Sintomas, Diagnostico)),
+            write(Str, '.'),
+            nl(Str)
+        )
+    ),
     close(Str).
 
 

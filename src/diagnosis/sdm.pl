@@ -1,9 +1,21 @@
+:- dynamic sdm_base_dir/1.
+:- prolog_load_context(directory, SDM_DIR), asserta(sdm_base_dir(SDM_DIR)).
+
+%% caminho_relativo_sdm(+Relativo, -Absoluto) is det.
+%
+%  Resolve caminhos relativos a partir de src/diagnosis.
+caminho_relativo_sdm(Relativo, Absoluto) :-
+    sdm_base_dir(Base),
+    directory_file_path(Base, Relativo, Absoluto).
+
 %% carregar_dependencias is det.
 %
 % Carrega os arquivos de dependencias, como sintomas, etc.
 carregar_dependencias :-
-    consult('Sintomas.pl'),
-    consult('Doenca_Probabilidade.pl').
+    caminho_relativo_sdm('../data/sintomas.pl', ArquivoSintomas),
+    caminho_relativo_sdm('../data/doenca_probabilidade.pl', ArquivoProbabilidade),
+    consult(ArquivoSintomas),
+    consult(ArquivoProbabilidade).
 
 
 %% iniciar_diagnostico is nondet

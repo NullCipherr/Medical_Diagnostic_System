@@ -1,38 +1,144 @@
-# 🏥 Medical_Diagnostic_System
-Este repositório contém um protótipo de um sistema de diagnóstico médico com vários módulos, incluindo módulo de pacientes e módulo de diagnóstico.
+# Medical Diagnostic System
 
-## 🎯 Objetivo
-O objetivo deste projeto é construir um protótipo de um sistema de diagnóstico médico que interage com o usuário para identificar possíveis doenças com base nos sintomas informados.
+Protótipo em Prolog para apoio ao diagnóstico por sintomas e gestão de pacientes, com interface web moderna, execução via Docker e testes automatizados.
 
-## 📋 Módulo de Controle de Pacientes
-O sistema possui um módulo de controle de pacientes que permite a consulta, inclusão, alteração e exclusão de pacientes em um arquivo de dados chamado pacientes.txt. 
+## Visão Geral
 
-## 🤖 Módulo de Diagnóstico
-O sistema possui uma Interface Humano-Computador (IHC) que interage com o usuário solicitando informações sobre os sintomas que o paciente está sentindo.
+O projeto possui dois blocos funcionais:
 
-## 📚 Lista de Doenças
-O código fonte em Prolog inclui uma lista de doenças e seus sintomas, juntamente com o valor de probabilidade de cada doença. 
+1. Diagnóstico: cruza sintomas informados com a base de conhecimento de doenças e probabilidades.
+2. Pacientes: cadastro, consulta, alteração, exclusão e persistência em arquivo.
 
-## 📊 IHC de Resultados
-Se houver mais de um tipo de doença relacionada aos sintomas informados pelo paciente, o sistema apresentará os percentuais de probabilidade das possíveis doenças do paciente. 
+A aplicação pode ser utilizada em modo CLI (terminal) ou Web (navegador).
 
-## ❓ Mecanismos de Questionamento
-O sistema permite que o usuário questione o diagnóstico final, fornecendo explicações sobre por que o paciente tem a doença X, por que o paciente não tem a doença Y, e por que foi perguntado se o paciente tem o sintoma A. 🧐
+## Estrutura do Projeto
 
-## 📖 Informações Adicionais
-A IHC permite que o usuário peça mais informações sobre o diagnóstico da doença, mostrando quais sintomas da doença o paciente apresenta e quais outros sintomas da doença o usuário não informou. 
+```text
+.
+├── data/
+│   └── pacientes.txt
+├── docs/
+│   ├── ARQUITETURA.md
+│   └── ROADMAP.md
+├── src/
+│   ├── cli/
+│   │   └── main.pl
+│   ├── data/
+│   │   ├── doenca_probabilidade.pl
+│   │   └── sintomas.pl
+│   ├── diagnosis/
+│   │   └── sdm.pl
+│   ├── patients/
+│   │   └── scp.pl
+│   └── web/
+│       └── web_ui.pl
+├── tests/
+│   └── tests.pl
+├── Dockerfile
+└── docker-compose.yml
+```
 
-## 🧪 Testes Unitários
-O repositório inclui testes unitários para as funcionalidades implementadas. 
+## Como Executar (Docker)
 
-## ⚙️ Como utilizar
-Este programa foi desenvolvido em Prolog e deve ser executado no SWI-Prolog. Aqui estão as etapas para utilizá-lo:
+Pré-requisitos: Docker e Docker Compose.
 
-- Instale o SWI-Prolog: Se você ainda não tem o SWI-Prolog instalado, você pode baixá-lo do site oficial: SWI-Prolog.
-- Clone o repositório: Clone o repositório do Medical_Diagnostic_System para o seu computador local.
-- Abra o arquivo no SWI-Prolog: Navegue até a pasta do projeto clonado e abra o arquivo principal do programa (por exemplo, main.pl) no SWI-Prolog.
-- Execute o programa: No SWI-Prolog, digite "consult('main.pl')", para carregar o arquivo e em seguida "main." para executar o programa carregado.
-- Interaja com o programa: O programa solicitará informações sobre os sintomas que o paciente está sentindo. Insira as informações conforme solicitado.
-- Veja os resultados: Após inserir todas as informações necessárias, o programa fornecerá um diagnóstico baseado nos sintomas informados.
+1. Build das imagens:
 
-Lembre-se, este é apenas um protótipo de um sistema de diagnóstico médico. Sempre consulte um profissional de saúde para um diagnóstico preciso.
+```bash
+docker compose build
+```
+
+2. Executar interface web:
+
+```bash
+docker compose up mds-web
+```
+
+Acesse:
+
+```text
+http://localhost:8081
+```
+
+Se a porta `8081` estiver em uso:
+
+```bash
+MDS_WEB_PORT=8090 docker compose up mds-web
+```
+
+3. Executar testes:
+
+```bash
+docker compose run --rm mds-tests
+```
+
+4. Executar modo CLI:
+
+```bash
+docker compose run --rm mds
+```
+
+## Como Executar (Sem Docker)
+
+Pré-requisito: SWI-Prolog.
+
+1. Interface web:
+
+```prolog
+consult('src/web/web_ui.pl').
+start_web.
+```
+
+2. CLI:
+
+```prolog
+consult('src/cli/main.pl').
+start.
+```
+
+3. Testes:
+
+```prolog
+consult('tests/tests.pl').
+run_tests.
+```
+
+## Interface Web
+
+A interface web inclui:
+
+1. Sidebar com navegação por função.
+2. Dashboard com visão geral do sistema.
+3. Diagnóstico com formulário e lista de sintomas da base.
+4. Cadastro de paciente com feedback visual de sucesso/erro.
+5. Lista de pacientes em tabela responsiva.
+
+## Diagnóstico Técnico e Melhorias Prioritárias
+
+Análise do estado atual do código:
+
+Pontos fortes:
+
+1. Regras de diagnóstico explícitas e legíveis.
+2. Testes automatizados cobrindo funções centrais.
+3. Interface web funcional para uso demonstrável.
+4. Persistência simples e transparente em arquivo.
+
+Gaps para tornar o projeto mais relevante:
+
+1. Separar regras de domínio do modo de interação (CLI/Web) em camadas mais claras.
+2. Padronizar nomenclatura e acentuação para evitar ambiguidades entre átomos de sintomas.
+3. Evoluir persistência para banco de dados (SQLite/PostgreSQL) com versionamento de schema.
+4. Criar estratégia de validação de entrada e tratamento de erro orientado ao usuário.
+5. Adicionar CI (GitHub Actions) para rodar testes automaticamente a cada push/PR.
+6. Incluir testes de integração para fluxo web (rotas e persistência).
+7. Publicar documentação de API/contratos e guia de contribuição.
+
+Detalhamento de arquitetura e próximos ciclos em:
+
+- `docs/ARQUITETURA.md`
+- `docs/ROADMAP.md`
+
+## Aviso Importante
+
+Este sistema é um protótipo para fins acadêmicos e de demonstração técnica. Não substitui avaliação médica profissional.
